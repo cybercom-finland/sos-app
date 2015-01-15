@@ -1,0 +1,226 @@
+<div class="modal-header">
+    <h2 class="h2-red"> Liity SOS-kummiksi! </h2>
+</div>
+<div class="modal-body">
+    <form name="sInfoForm" ng-submit="submitSponsor(sInfoForm)" class="sponsor-form" role="form" novalidate>
+    
+    <div class="form-group maa">
+        <label>Toiveen lapsen maanosasta tai maasta</label>
+    
+        <select ng-init="continent='Manner, jossa tarve suurin'" name="continent" class="form-control" ng-model="continent">
+            <option value="Manner, jossa tarve suurin">Manner, jossa tarve suurin</option>
+            <option value="Aasia">Aasia</option>
+            <option value="Afrikka">Afrikka</option>
+            <option value="Eurooppa">Eurooppa</option>
+            <option value="Latinalainen Amerikka">Latinalainen Amerikka</option>
+        </select>
+        <select ng-init="country='Maa, jossa tarve suurin'" name="country" class="form-control" ng-model="country">
+            <option value="Maa, jossa tarve suurin">Maa, jossa tarve suurin</option>
+            <option value="Albania">Albania</option>
+            <option value="Angola">Angola</option>
+            <option value="Argentiina">Argentiina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Azerbaizan">Azerbaizan</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Benin">Benin</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Bosnia-Hertsegovina">Bosnia-Hertsegovina</option>
+            <option value="Botswana">Botswana</option>
+            <option value="Brasilia">Brasilia</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Burkina Faso">Burkina Faso</option>
+            <option value="Burundi">Burundi</option>
+            <option value="Chile">Chile</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Dominikaaninen Tas.">Dominikaaninen Tas.</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Etiopia">Etiopia</option>
+            <option value="Etelä-Sudan">Etelä-Sudan</option>
+            <option value="Filippiinit">Filippiinit</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Gambia">Gambia</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Guinea">Guinea</option>
+            <option value="Guinea-Bissau">Guinea-Bissau</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Intia">Intia</option>
+            <option value="Jamaika">Jamaika</option>
+            <option value="Jordania">Jordania</option>
+            <option value="Kambodza">Kambodza</option>
+            <option value="Kamerun">Kamerun</option>
+            <option value="Kap Verde">Kap Verde</option>
+            <option value="Kazakhstan">Kazakhstan</option>
+            <option value="Kenia">Kenia</option>
+            <option value="Keski-Afrikan tasavalta">Keski-Afrikan tasavalta</option>
+            <option value="Kiina">Kiina</option>
+            <option value="Kirgisia">Kirgisia</option>
+            <option value="Kolumbia">Kolumbia</option>
+            <option value="Kongon dem.">Kongon dem.</option>
+            <option value="Kroatia">Kroatia</option>
+            <option value="Kypros">Kypros</option>
+            <option value="Laos">Laos</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lesotho">Lesotho</option>
+            <option value="Libanon">Libanon</option>
+            <option value="Liberia">Liberia</option>
+            <option value="Liettua">Liettua</option>
+            <option value="Makedonia">Makedonia</option>
+            <option value="Malawi">Malawi</option>
+            <option value="Mali">Mali</option>
+            <option value="Marokko">Marokko</option>
+            <option value="Meksiko">Meksiko</option>
+            <option value="Mongolia">Mongolia</option>
+            <option value="Mosambik">Mosambik</option>
+            <option value="Namibia">Namibia</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Niger">Niger</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Norsunluurannikko">Norsunluurannikko</option>
+            <option value="Panama">Panama</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Romania">Romania</option>
+            <option value="Ruanda">Ruanda</option>
+            <option value="Sambia">Sambia</option>
+            <option value="Serbia">Serbia</option>
+            <option value="Sierra Leone">Sierra Leone</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Somalia">Somalia</option>
+            <option value="Somalimaa">Somalimaa</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Syyria">Syyria</option>
+            <option value="Swazimaa">Swazimaa</option>
+            <option value="Tansania">Tansania</option>
+            <option value="Thaimaa">Thaimaa</option>
+            <option value="Togo">Togo</option>
+            <option value="Tsekki">Tsekki</option>
+            <option value="Tsad">Tsad</option>
+            <option value="Tunisia">Tunisia</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Ukraina">Ukraina</option>
+            <option value="Unkari">Unkari</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="Valko-Venäjä">Valko-Venäjä</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Venäjä">Venäjä</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Viro">Viro</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+        </select>
+    </div>
+    <div class="form-group sukupuoli" ng-class="{ 'has-error' : (sInfoForm.sex.$error.required && submitted)}">
+        <label>
+            Toiveeni lapsen sukupuolesta
+        </label>
+    
+        <div class="btn-group">
+            <label class="btn btn-lg btn-donation-amount" name="sex" ng-model="sex" btn-radio="'either'" required>
+                Kumpi vain
+            </label>
+            <label class="btn btn-lg btn-donation-amount" name="sex" ng-model="sex" btn-radio="'girl'" required>
+                Tyttö
+            </label>
+            <label class="btn btn-lg btn-donation-amount" name="sex" ng-model="sex" btn-radio="'boy'" required>
+                Poika
+            </label>
+        </div>
+        <p ng-show="(sInfoForm.sex.$error.required && submitted)" class="help-block">Valitse jokin vaihtoehdoista</p>
+    
+    </div>
+    <div class="form-group ika" ng-class="{ 'has-error' : (sInfoForm.age.$error.required && submitted)}">
+        <label>Toiveeni lapsen iästä:</label>
+    
+        <div class="">
+            <input type="text" class="form-control age" placeholder="Ikä" name="age" ng-model="age" maxlength="2" required>
+            <span class="input-group-btn">
+                <label class="btn btn-lg btn-donation-amount age" ng-model="age" btn-radio="'Ikä'">Suurimman tarpeen mukaan</label>
+            </span>
+        </div>
+        <p ng-show="(sInfoForm.age.$error.required && submitted)" class="help-block">Anna ikä tai valitse suurimman tarpeen mukaan</p>
+    </div>
+    <div class="form-group">
+        <label class="checkbox-inline">
+            <input name="joinAsGroup" type="checkbox" ng-model="joinAsGroup"> Haluan liittyä kuukausilahjoittajaksi yrityksenä tai yhteisönä
+        </label>
+    </div>
+    <div class="form-group kummimaksu" ng-class="{ 'has-error' : (sInfoForm.donationAmount.$error.required && submitted) || sInfoForm.donationAmount.$error.number}">
+        <label>
+            Minulle sopiva kummimaksu / kk:
+        </label>
+    
+        <div class="btn-group" ng-show="!joinAsGroup">
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="25">25 &euro;</label>
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="35">35 &euro;</label>
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="40">40 &euro;</label>
+        </div>
+        <div class="btn-group" ng-show="joinAsGroup">
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="25">25 &euro;</label>
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="50">50 &euro;</label>
+            <label class="btn btn-lg btn-donation-amount" ng-model="donationAmount" btn-radio="100">100 &euro;</label>
+        </div>
+        <div class="row donation-amount">
+            <span ng-click="decreaseDonationAmount()" class="decrease glyphicon glyphicon-minus"></span>
+            <span class="amount"><strong>{{donationAmount}} &euro;</strong></span>
+            <span ng-click="increaseDonationAmount()" class="increase glyphicon glyphicon-plus"></span>
+        </div>
+        <p ng-show="(sInfoForm.donationAmount.$error.required && submitted)" class="help-block">Valitse lahjoitussumma</p>
+        <p ng-show="sInfoForm.donationAmount.$error.number" class="help-block">Anna rahasumma numerona</p>
+    </div>
+    <div ng-if="joinAsGroup" class="form-group" ng-class="{ 'has-error' : ($parent.sInfoForm.companyName.$error.required && $parent.submitted)}">
+        <label class="sr-only">Yritys / yhteisö</label>
+        <input type="text" required name="companyName" ng-model="$parent.companyName" placeholder="Yritys / yhteisö" class="form-control">
+        <p ng-show="($parent.sInfoForm.companyName.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.firstName.$error.required && submitted)}">
+        <label class="sr-only">Etunimi</label>
+        <input type="text" required name="firstName" ng-model="firstName" placeholder="Etunimi" class="form-control">
+        <p ng-show="(sInfoForm.firstName.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.lastName.$error.required && submitted)}">
+        <label class="sr-only">Sukunimi</label>
+        <input type="text" name="lastName" ng-model="lastName" placeholder="Sukunimi" class="form-control" required>
+        <p ng-show="(sInfoForm.lastName.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.streetAddress.$error.required && submitted)}">
+        <label class="sr-only">Osoite</label>
+        <input type="text" name="streetAddress" ng-model="streetAddress" placeholder="Osoite" class="form-control" required>
+        <p ng-show="(sInfoForm.streetAddress.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.postNumber.$error.required && submitted)}">
+        <label class="sr-only">Postinumero</label>
+        <input type="text" name="postNumber" ng-model="postNumber" placeholder="Postinumero" class="form-control" required>
+        <p ng-show="(sInfoForm.postNumber.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.postOffice.$error.required && submitted)}">
+        <label class="sr-only">Postitoimipaikka</label>
+        <input type="text" name="postOffice" ng-model="postOffice" placeholder="Postitoimipaikka" class="form-control" required>
+        <p ng-show="(sInfoForm.postOffice.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.phoneNumber.$error.required && submitted)}">
+        <label class="sr-only">Puhelinnumero</label>
+        <input type="text" name="phoneNumber" ng-model="phoneNumber" placeholder="Puhelinnumero" class="form-control">
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : (sInfoForm.email.$error.required && submitted) || (sInfoForm.email.$error.email && submitted) || emailInUse }">
+        <label class="sr-only">Sähköposti</label>
+        <input type="email" name="email" ng-model="email" placeholder="Sähköposti" class="form-control" required>
+    
+        <p ng-show="(sInfoForm.email.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+        <p ng-show="emailInUse" class="help-block">Sähköpostiosoite on jo käytössä.</p>
+        <p ng-show="(sInfoForm.email.$error.email && submitted)" class="help-block">Annettua osoitetta ei tunnistettu sähköpostiosoitteeksi.</p>
+    </div>
+    <div class="form-group">
+        <label class="checkbox-inline">
+            <input name="joinAsGroup" type="checkbox" ng-model="orderNewsletter">Tilaan SOS-Lapsikylän uutiskirjeen
+        </label>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-custom btn-sponsor-form-submit">
+            Liity kummiksi
+        </button>
+    </div>
+    </form>
+</div>

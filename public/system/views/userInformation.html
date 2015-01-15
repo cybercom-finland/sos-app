@@ -1,0 +1,104 @@
+<div class="modal-header">
+    <h2 class="h2-red">Oman verkoston luominen</h2>
+</div>
+<div class="modal-body">
+    <p>
+        Anna verkostollesi julkinen nimi ja halutessasi myös oma kuva. Verkoston sijainniksi voit antaa
+        osoitteen kadun, kaupungin tai maan tarkkuudella.
+    </p>
+
+    <form name="sponsorDataForm" ng-submit="submitForm(sponsorDataForm.$valid)" class="sponsor-form" role="form"
+          novalidate>
+        <div class="form-group"
+             ng-class="{ 'has-error' : (sponsorDataForm.nickname.$invalid && !sponsorDataForm.nickname.$pristine) || (sponsorDataForm.nickname.$invalid && submitted ) || nametaken}">
+            <label class="sr-only">Nick</label>
+            <input type="text" maxlength="30" ng-pattern="/^[a-zA-Z0-9_-]{1,30}$/"  name="nickname" ng-model="userInput.nickname"
+                   class="form-control sponsor-form-text-input" placeholder="Nimimerkki" required>
+            <p ng-show="sponsorDataForm.nickname.$error.pattern" class="help-block">
+                Nimimerkki voi sisältää vain kirjaimia A-Z, numeroita tai välimerkkejä: '-'.
+            </p>
+
+            <p ng-show="(sponsorDataForm.nickname.$error.required && submitted)" class="help-block">
+                Nimimerkki on pakollinen.
+            </p>
+
+            <p ng-show="nametaken" class="help-block">Nimimerkki: {{submittedName}} on jo käytössä.</p>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-default btn-custom" ng-click="getFacebookProfileImage()">
+                Käytä facebook profiilikuvaani
+            </button>
+            <img ng-show="showUserIcon" class="sponsor-icon" ng-src="{{userInput.imageUrl}}"/>
+        </div>
+        <div class="form-group"
+             ng-class="{ 'has-error' : (sponsorDataForm.address.$invalid && !sponsorDataForm.address.$pristine) || (sponsorDataForm.address.$invalid && submitted) || geocodeNoResults}">
+            <label class="sr-only"> postal </label>
+
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-custom" type="button" ng-click="getLocation()">Hae
+                        sijaintini
+                    </button>
+                </span>
+                <input type="text" name="address" ng-model="userInput.address"
+                       class="form-control sponsor-form-text-input"
+                       placeholder="Sijainti: kadunnimi, kaupunki, maa"
+                       required>
+
+                <div tooltip-html-unsafe="<p>Antamaasi osoitetta käytetään sinun sijoittamiseesi kartalle. Voit hakea sijaintiasi, jolloin sovellus käyttää selaimesi geolokaatiota. Haettu sijainti tulee näkyville viereiseen kenttään, jonka jälkeen sitä voi vielä muuttaa.</p>
+               <p>Sinun ei tarvitse antaa tarkkaa osoitetta, vaan esimerkiksi kadunnimi, kaupunki riittää.</p>"
+                     tooltip-trigger="mouseenter"
+                     tooltip-placement="left" class="location-tooltip">
+                    <img src="public/system/assets/img/info-small.png">
+                </div>
+            </div>
+            <p ng-show="(sponsorDataForm.address.$invalid-required && !sponsorDataForm.address.$pristine) || (sponsorDataForm.address.$invalid && submitted)"
+               class="help-block">Sijaintitieto on pakollinen.</p>
+
+            <p ng-show="geolocationNotSupported" class="help-block">Selaimesi ei tue sijaintitietojen hakua.</p>
+
+            <p ng-show="reverseGeocodeFailed" class="help-block">Sijaintitietojen haku epäonnistui.</p>
+
+            <p ng-show="geolocationNotAllowed" class="help-block">Sijaintitietojen käyttöön ei saatu lupaa
+                selaimelta.</p>
+
+            <p ng-show="geocodeNoResults" class="help-block">Annettua sijaintia ei saatu paikannettua.</p>
+        </div>
+        <div class="form-group"
+             ng-class="{ 'has-error' : (sponsorDataForm.code.$invalid && submitted ) || codeInvalid || codeUsed }"
+             ng-if="(chosenJoinNetworkOption == 'OldSponsor')">
+            <input type="text" name="code" ng-model="userInput.code"
+                   class="form-control sponsor-form-text-input"
+                   placeholder="Avain. Muotoa: XXXXX-XXXXX-XXXXX-XXXXX" required>
+
+            <p ng-show="(sponsorDataForm.code.$error.required && submitted)" class="help-block">Avain on
+                pakollinen.</p>
+
+            <p ng-show="codeInvalid" class="help-block">Annettu koodi ei kelpaa.</p>
+
+            <p ng-show="codeUsed" class="help-block">Annettu koodi on jo käytössä.</p>
+        </div>
+        <div class="form-group"
+             ng-class="{ 'has-error' : (sponsorDataForm.email.$invalid && submitted ) || emailInUse}"
+             ng-if="(chosenJoinNetworkOption == 'OldSponsor')">
+            <input type="email" name="email" ng-model="userInput.email"
+                   class="form-control sponsor-form-text-input"
+                   placeholder="Sähköpostiosoite" required>
+
+            <p ng-show="(sponsorDataForm.email.$error.required && submitted)" class="help-block">
+                Sähköpostiosoite on
+                pakollinen.</p>
+
+            <p ng-show="(sponsorDataForm.email.$error.email && submitted)" class="help-block">Annettua osoitetta
+                ei
+                tunnistettu sähköpostiosoitteeksi.</p>
+
+            <p ng-show="emailInUse" class="help-block">Sähköpostiosoite on jo käytössä.</p>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-custom btn-sponsor-form-submit"
+                    >Liity
+            </button>
+        </div>
+    </form>
+</div>

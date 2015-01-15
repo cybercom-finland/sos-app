@@ -1,0 +1,60 @@
+<div class="modal-header">
+    <h2 class="h2-red">
+        Liity SOS-lapsikylien viestinviejäksi!
+    </h2>
+</div>
+<div class="modal-body">
+    <form name="mInfoForm" ng-submit="submitMessenger(mInfoForm)" class="sponsor-form" role="form" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.firstName.$error.required && submitted)}">
+            <label class="sr-only">Etunimi</label>
+            <input type="text" required name="firstName" ng-model="firstName" placeholder="Etunimi" class="form-control">
+
+            <p ng-show="(mInfoForm.firstName.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.lastName.$error.required && submitted)}">
+            <label class="sr-only">Sukunimi</label>
+            <input type="text" name="lastName" ng-model="lastName" placeholder="Sukunimi" class="form-control" required>
+
+            <p ng-show="(mInfoForm.lastName.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.streetAddress.$error.required && submitted)}">
+            <label class="sr-only">Osoite</label>
+            <input type="text" name="streetAddress" ng-model="streetAddress" placeholder="Osoite" class="form-control" required>
+            <p ng-show="(mInfoForm.streetAddress.$error.required && submitted)" class="help-block">Tämä kenttä on pakollinen</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.postNumber.$error.required && submitted)}">
+            <label class="sr-only">Postinumero</label>
+            <input type="text" name="postNumber" ng-model="postNumber" placeholder="Postinumero" class="form-control" required>
+
+            <p ng-show="(mInfoForm.postNumber.$error.required && submitted)" class="help-block"> Tämä kenttä on pakollinen
+            </p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.postOffice.$error.required && submitted)}">
+            <label class="sr-only">Postitoimipaikka</label>
+            <input type="text" name="postOffice" ng-model="postOffice" placeholder="Postitoimipaikka" class="form-control" required>
+
+            <p ng-show="(mInfoForm.postOffice.$error.required && submitted)" class="help-block"> Tämä kenttä on pakollinen </p>
+        </div>
+        <div class="form-group">
+            <label class="sr-only">Puhelinnumero</label>
+            <input type="text" name="phoneNumber" ng-model="phoneNumber" placeholder="Puhelinnumero" class="form-control">
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (mInfoForm.email.$error.required && submitted) || emailInUse || (mInfoForm.email.$error.email && submitted)}">
+            <label class="sr-only">Sähköposti</label>
+            <input type="email" name="email" ng-model="email" placeholder="Sähköposti" class="form-control" required>
+
+            <p ng-show="(mInfoForm.email.$error.required && submitted)" class="help-block"> Tämä kenttä on pakollinen </p>
+
+            <p ng-show="emailInUse" class="help-block">Sähköpostiosoite on jo käytössä</p>
+
+            <p ng-show="(mInfoForm.email.$error.email && submitted)" class="help-block"> Annettua osoitetta ei tunnistettu sähköpostiosoitteeksi. </p>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-custom btn-sponsor-form-submit">
+                Liity viestinviejäksi
+            </button>
+        </div>
+    </form>
+</div>

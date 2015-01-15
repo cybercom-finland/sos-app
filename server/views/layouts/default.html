@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope="itemscope"
+      itemtype="http://schema.org/Product">
+{% include '../includes/head.html' %}
+<body>
+<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+<div class="whole-page">
+    <div class="navbar navbar-inverse navbar-static-top" data-ng-include="'/public/system/views/header.html'"
+         data-role="navigation"></div>
+    {% if adminEnabled %}
+    <section class="admin-menu">
+        <div data-ng-include="'/mean-admin/views/index.html'"></div>
+    </section>
+    {% endif %}
+    <noscript> Enable javascript to view the site.</noscript>
+    <section class="content">
+        <section class="container-fluid container-main-view">
+            {% block content %}{% endblock %}
+        </section>
+    </section>
+    {% include '../includes/foot.html' %}
+</div>
+</body>
+
+</html>

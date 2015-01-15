@@ -1,0 +1,41 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Tervetuloa SOS hyväntekijäksi!</h3>
+    </div>
+
+    <div class="modal-body">
+        <div class="help-element"> 
+            <img class="help-image" src="public/system/assets/img/infoimages/alone.png">
+            <p> Sinulla on nyt oma verkosto, johon voit kutsua ystäviäsi mukaan. Kutsu ystäviä jakamalla tietoa verkostostasi Facebookilla, Twitterillä tai suoralla linkillä verkostosivullesi.</p>
+        </div>
+        <div class="help-element"> 
+            <img class="help-image" src="public/system/assets/img/infoimages/grow.png">
+            <p>Kutsun kautta oman verkoston luoneet ystäväsi näkyvät oman verkostosi jäseninä ja pääset tutustumaan heidän luomiinsa verkostoihin ja ovat mukana levittämässä tietoa SOS-toiminnasta.</p>
+        </div>        
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group col-lg-12 url-row">           
+                        <label type="text" class="form-control" >
+                          Ota talteen linkki omaan verkostoosi:
+                          <b style="color:#464646;"> [ {{myUniqueUrl}} ] </b>
+                        </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer url-footer">
+        <h3 class="invite-message">Kutsu ystäväsi liittymään verkostoosi: </h3>
+        <a href="" ng-controller="IndexController">
+            <div class="fb-share" ng-click="faboshare()">
+                <img class="fb-icon" ng-src="public/system/assets/img/fb.png">
+            </div> 
+        </a>
+        <a href="" ng-controller="IndexController">
+            <div class="sm-share"  ng-click="twitterShareClick()">
+                <img class="twitter-icon" ng-src="public/system/assets/img/bird_blue_48.png">
+            </div> 
+        </a>
+                <button class="btn btn-custom btn-lg" ng-click="ok()">Jatka</button>
+    </div>
+</div> 

@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3 class="modal-title"><b>Liity SOS-lapsikylien ystäväverkostoon</b></h3>
+</div>
+<div class="modal-body">
+    <div class="join-network-element">
+        <img src="public/system/assets/img/verkosto-intro.png">
+        <h4 class="centered"> SOS-ystäväverkosto </h4>
+
+        <p class="centered"> SOS-ystävänä jaat ja välität viestiä SOS lapsikylistä ja heidän tekemästään työstä.
+            Samalla voit kasvattaa verkostoasi ja katsoa kuinka tieto leviää sinun kauttasi </p>
+        <button class="btn btn-green btn-lg" ng-click="selected.JoinNetworkOption = 'Messenger'; ok();">
+            Aloita verkosto
+        </button>
+    </div>
+    <div class="join-network-element">
+        <img src="public/system/assets/img/sydan-intro.png">
+        <h4 class="centered"> SOS-kummi </h4>
+
+        <p class="centered"> SOS-kummina sinulla on tilaisuus seurata yhden lapsen kehitystarinaa ja nähdä kuinka
+            apusi menee perille ja kuinka se ihan oikeasti muuttaa kummilapsen elämän. Samalla aloitat oman
+            verkostosi. </p>
+        <button class="btn btn-green btn-lg" ng-click="selected.JoinNetworkOption = 'Sponsor'; ok();">
+            Ryhdy kummiksi
+        </button>
+    </div>
+    <div class="join-network-element">
+        <img src="public/system/assets/img/sydan-intro.png">
+        <h4 class="centered"> Olen SOS-kummi </h4>
+
+        <p class="centered"> Vanhana SOS-kummina voit pyytää SOS lapsikyliltä avaimen, jolla pystyt aloittamaan
+            verkostosi kasvattamisen ilman lomakkeen täyttöä. </p>
+        <button class="btn btn-green btn-lg" ng-click="selected.JoinNetworkOption = 'OldSponsor'; ok();">
+            Aloita
+        </button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">Suurimmat verkostot</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table">
+            <tr>
+                <td>Käyttäjä</td>
+                <td>Verkoston koko</td>
+            </tr>
+            <tr ng-repeat="sponsor in topTenSponsors">
+                <td>{{ sponsor.name }}</td>
+                <td>{{ sponsor.score }}</td>
+                <td><a ng-href="" ng-click="close()">Näytä</a></td>
+            </tr>
+        </table>
+     </div>
+</div>

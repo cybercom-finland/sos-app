@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h3 class="modal-title">Ohje</h3>
+</div>
+<div class="modal-body">
+    <div ng-show="createOwnNetwork">
+        <div class="help-element">
+            <img class="help-image" src="public/system/assets/img/infoimages/create.png">
+
+            <p> Voit perustaa oman verkostosi painamalla Luo oma Verkosto -painiketta. Luotuasi verkoston ilmestyt
+                kartalle
+                antamaasi sijaintiin.</p>
+        </div>
+        <div class="help-element">
+            <img class="help-image" src="public/system/assets/img/infoimages/gather.png">
+
+            <p> Luodessasi verkostosi saat samalla uniikin linkin, jota voit jakaa ystävillesi sosiaalisessa mediassa ja
+                kutsua heidät liittymään osaksi sinun verkostoasi.</p>
+        </div>
+    </div>
+    <div ng-hide="createOwnNetwork">
+        <div class="help-element">
+            <img class="help-image" src="public/system/assets/img/infoimages/Join.png">
+
+            <p> Tulit sivustolle käyttäjän {{founderName}} linkin kautta</p>
+
+            <p>Lähde mukaan!-painikkeella pääset mukaan hänen verkostoon.</p>
+        </div>
+        <div class="help-element">
+            <img class="help-image" src="public/system/assets/img/infoimages/gather.png">
+
+            <p> Liittymällä {{founderName}} verkostoon luot oman verkoston, johon voit kutsua ystäviäsi mukaan toimimaan
+                SOS hyväntekijöinä.</p>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <b style="color:#00adef;"><i> Vikatilanteissa ota yhteyttä Tarmoon </i></b>
+    <button class="btn btn-custom btn-lg" ng-click="ok()">Sulje</button>
+</div>

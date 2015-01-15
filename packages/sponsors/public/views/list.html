@@ -1,0 +1,22 @@
+<section data-ng-controller="SponsorsController" data-ng-init="find()" >
+    <ul class="sponsors unstyled">
+        <li data-ng-repeat="sponsor in sponsors">
+            <span>lat {{sponsor.coords.latitude}} long {{sponsor.coords.longitude}} </span> /
+            <span>{{sponsor.name}}</span>
+            <span> {{sponsor.imgUrl}} </span>
+            <h2>
+                <a data-ng-href="#!/sponsors/{{sponsor._id}}"></a>
+                <span data-ng-if="hasAuthorization(sponsor)">
+                    <a class="btn" href="/#!/sponsors/{{sponsor._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn" data-ng-click="remove(sponsor);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </span>
+            </h2>
+            <div>{{sponsor.content}}</div>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!sponsors || sponsors.length">No sponsors yet. <br> Why don't you <a href="/#!/sponsors/create">Join</a>?</h1>
+</section>

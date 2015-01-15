@@ -1,0 +1,73 @@
+</p>
+                              </td>
+                            </tr>
+                          </tbody></table>
+                        
+                          <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%">
+                            <tbody><tr>
+                              <td class="padded" style="padding-top: 0;padding-bottom: 0;padding-left: 40px;padding-right: 40px;vertical-align: top">
+                                
+            <div style="height:20px">&nbsp;</div>
+          
+                              </td>
+                            </tr>
+                          </tbody></table>
+                        
+                        <div class="column-bottom" style="font-size: 17px;line-height: 17px">&nbsp;</div>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </center>
+              </td>
+            </tr>
+          </tbody></table>
+        
+      <div class="spacer" style="font-size: 1px;line-height: 42px">&nbsp;</div>
+      <table class="wrapper" style="border-collapse: collapse;border-spacing: 0;background-color: #eceef1;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;table-layout: fixed">
+        <tbody><tr>
+          <td style="padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;vertical-align: top">
+            <center>
+              <table class="footer" style="border-collapse: collapse;border-spacing: 0;width: 100%;background-color: #e8eaec">
+                <tbody><tr>
+                  <td style="padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;vertical-align: top;font-family: Merriweather, Georgia, serif;color: #8e8e8e;font-size: 10px;line-height: 18px;font-style: italic">
+                    <center>
+                      <table class="one-col" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto;width: 600px;background-color: #e8eaec">
+                        <tbody><tr>
+                          <td class="column" style="padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;vertical-align: top;text-align: left;font-family: Merriweather, Georgia, serif;color: #8e8e8e;font-size: 10px;line-height: 18px;font-style: italic">
+                            <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%;background-color: #e8eaec">
+                              <tbody><tr>
+                                <td class="padded" style="padding-top: 0;padding-bottom: 0;padding-left: 20px;padding-right: 20px;vertical-align: top;font-family: Merriweather, Georgia, serif;color: #8e8e8e;font-size: 10px;line-height: 18px;font-style: italic">
+                                  <table class="footer-container" style="border-collapse: collapse;border-spacing: 0;width: 100%">
+                                    <tbody><tr>
+                                      <td class="column-details" style="padding-top: 40px;padding-bottom: 75px;padding-left: 0;padding-right: 0;vertical-align: top;font-family: Merriweather, Georgia, serif;color: #8e8e8e;font-size: 10px;line-height: 18px;font-style: italic">
+                                        <table style="border-collapse: collapse;border-spacing: 0">
+                                          <tbody><tr>
+                                            <td class="prefs" style="padding-top: 0;padding-bottom: 0;padding-left: 0;padding-right: 0;vertical-align: top;font-family: Merriweather, Georgia, serif;color: #8e8e8e;font-size: 10px;line-height: 18px;font-style: italic;text-align: left">
+                                              <div class="address" style="display: block;Margin-bottom: 17px;font-family: Georgia, serif">www.sos.ware.fi</div>
+                                              <div class="permission" style="display: block;font-family: Georgia, serif">www.sos-lapsikyla.fi</div>
+                                              <div style="font-family: Georgia, serif">
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody></table>
+                                      </td>
+                                      
+                                    </tr>
+                                  </tbody></table>
+                                </td>
+                              </tr>
+                            </tbody></table>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </center>
+                  </td>
+                </tr>
+              </tbody></table>
+            </center>
+          </td>
+        </tr>
+      </tbody></table>
+    </center>
+  
+</body></html>

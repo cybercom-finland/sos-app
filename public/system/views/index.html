@@ -1,0 +1,242 @@
+<section data-ng-controller="IndexController" ng-init="facebookInit()">
+    <div class="top-view">
+    <div class="left-accordion" ng-show="accordionShow">
+        <accordion close-others=true class="custom-accordion">
+            <accordion-group is-open="showStories">
+                <accordion-heading>
+                    <h4 class="h3-blue" style="cursor:pointer;">SOS toiminta
+                        <i class="pull-right glyphicon"
+                           ng-class="showStories ? 'glyphicon-chevron-down': 'glyphicon-chevron-right'"></i>
+                    </h4>
+                </accordion-heading>
+
+                <section data-ng-controller="StoriesController">
+                    
+                    <div ng-if="stories.length !== 0">
+                        <carousel interval="15000" class="story-carousel">
+                            <slide ng-repeat="story in stories" active="story.active">
+                                <img ng-src="{{story.image}}" style="margin:auto;">
+                            </slide>
+                        </carousel>
+
+                        <div class="story-container">
+                            <div class="story-content">
+                                <h4 class="h3-blue" style="margin-top:10px;"><b>{{header}}</b></h4>
+
+                                <p>{{content}}</p>
+                            </div>
+                            <a href="https://www.sos-lapsikyla.fi/etusivu/">Lue lisää</a>
+                        </div>
+                    </div>
+                    <div ng-if="stories.length === 0">
+                    <span class="no-data">Tietoja ei saatavilla.</span>
+                    </div>
+                </section>
+            </accordion-group>
+            <accordion-group is-open="showTwitter" class="twitter-accordion">
+                <accordion-heading>
+                    <h4 class="h3-blue" style="cursor:pointer;">#SOS-Lapsikylä
+                        <i class="pull-right glyphicon"
+                           ng-class="showTwitter ? 'glyphicon-chevron-down': 'glyphicon-chevron-right'"></i>
+                    </h4>
+                </accordion-heading>
+                <div class="twitter-container">
+                    <section data-ng-controller="SNFeedController">
+                        <twitter-timeline/>
+                    </section>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
+
+    <div class="map">
+        <section data-ng-controller="MapController" ng-init="fetchVillagesAndSponsors()">
+            <accordion close-others="false" class="right-accordion custom-accordion" ng-show="accordionShow">
+                <accordion-group is-open="showNetworkInfo">
+                    <accordion-heading>
+                        <h4 class="h3-blue" style="cursor:pointer;">SOS-ystäväverkosto
+                            <i class="pull-right glyphicon"
+                               ng-class="showNetworkInfo ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'"></i>
+                        </h4>
+                    </accordion-heading>
+                    <div class="network-info">
+                        <div ng-if="sponsor != undefined">
+                            <div>
+                                <div class="profile-icon">
+                                    <img class="founderimage" ng-src="{{sponsor.imgUrl}}">
+                                </div>
+                                <b>Perustaja:</b><br>
+                                {{sponsor.name}}
+                            </div>
+                            <h5><b>SOS-ystäviä verkostossa</b></h5>
+                            <h3 class="h3-number">{{sponsor.nSize}}</h3>
+                            <div ng-if="recruiter.name !== '' ">
+                                <h5><b>Käyttäjän {{sponsor.name}} kutsui </b></h5>
+                                    <div class="profile-icon">
+                                        <img class="founderimage" ng-src="{{recruiter.imgUrl}}">
+                                    </div>
+                                {{recruiter.name}}
+                            </div>                        
+                        </div>
+                        <div ng-if="sponsor == undefined">
+                            <span>Ei valittua verkostoa.</span>
+                        </div>
+                    </div>
+                </accordion-group>
+                <accordion-group is-open="showTopTen" class="top-ten-accordion">
+                    <accordion-heading>
+                        <h4 class="h3-blue" style="cursor:pointer;">Suurimmat verkostot
+                            <i class="pull-right glyphicon"
+                               ng-class="showTopTen ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'"></i>
+                        </h4>
+                    </accordion-heading>
+                    <div class="top-list-item" ng-class="{ activeListItem: topsponsor.name == sponsor.name }"
+                         ng-repeat="topsponsor in topTenSponsors">
+                        <a style="cursor:pointer;" ng-click="topSponsorClicked()" class="list-group-item">
+                            <span class="badge top-ten-badge"><img src="public/system/assets/img/network-icon.png"> {{topsponsor.nSize}}</span>
+                            {{topsponsor.name}}</a>
+                    </div>
+                    <div ng-if="topTenSponsors.length === 0" class="no-data">
+                        Kenelläkään ei ole vielä verkostoa.
+                    </div>
+                </accordion-group>
+                <accordion-group is-open="dbError" class="search-accordion">
+                    <accordion-heading>
+                    <accordion-toggle>
+                    </accordion-toggle>
+                        <form ng-submit="searchDB(searchDBtext)">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-bar" name="seachInput" ng-model="searchDBtext" ng-change="inputChange()" placeholder="Etsi nimimerkillä" ng-click="$event.stopPropagation();">
+                                <span class="input-group-btn">
+                                    <img class="btn-search" ng-click="searchDB(searchDBtext);$event.stopPropagation();" src="public/system/assets/img/suurennuslasi-intro.png">
+                                </span>
+                            </div>
+                        </div>
+                        </form>
+                    </accordion-heading>
+                    <p ng-show="dbError"> Nimimerkkiä ei löytynyt.</p>
+            </accordion-group>
+            </accordion>
+
+            <div class="map-buttons-top-right">
+                <button ng-if="founder.name != undefined" type="button" class="btn btn-custom btn-lg btn-join-network" ng-disabled="(founder !== undefined && savedSponsor.name !== undefined && founder.name === savedSponsor.name)" ng-click="joinThisNetwork()">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Lähde mukaan! 
+                </button>
+                <button ng-if="founder.name == undefined" type="button" class="btn btn-custom btn-lg btn-create-network"
+                        ng-click="joinThisNetwork()">
+                    Luo oma verkosto
+                </button>
+                 <img class="info-button" ng-click="openHelpWindow(); $event.stopPropagation();" src="public/system/assets/img/info-white-bg.png"/>
+            </div>
+                    <div class ="mobile-notification" ng-hide="accordionShow"> <h4> Tätä sivustoa ei ole optimoitu mobiililaitteelle. Monet sivuston ominaisuuksista on poissa käytöstä!</h4></div>
+            <div ng-if="(founder !== undefined && savedSponsor !== undefined && founder.name === savedSponsor.name)">
+                <div class="share-buttons-help panel">
+                    <p> Olet onnistuneesti liittynyt mukaan SOS hyväntekijäksi! </p>
+                    <p> Aloita verkostosi kasvattaminen jakamalla linkkiäsi Facebookissa ja Twitterissä näiden painikkeiden avulla.</p>
+                </div>
+                <div class="arrow-down arrow-down-right"></div>
+                <div class="arrow-down arrow-down-left"></div>
+            </div>
+
+            <div class="map-buttons-bottom-right">
+                <a href="">
+                    <div class="fb-share">
+                        <img class="fb-icon" ng-click="faboshare()" src="public/system/assets/img/fb.png">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="sm-share" ng-click="twitterShareClick()">
+                        <img class="twitter-icon" src="public/system/assets/img/bird_blue_48.png">
+                    </div>
+                </a>
+            </div>
+
+            <div class="sos-lapsikyla-footer">
+                <a style="color: #FFFFFF;" href="https://www.sos-lapsikyla.fi"> SOS-Lapsikylä </a>
+            </div>
+            
+            <!--Map setup-->
+            <google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    draggable="true"
+                    options="map.options"
+                    pan="true"
+                    control="map.control"
+                    events="map.events"
+                    bounds="map.bounds">
+
+                <!--Villages as kml layer-->
+                <layer type="KmlLayer" options="kmlLayerOptions"></layer>
+
+                <!-- Active sponsor -->
+                <window
+                        show="map.activeSponsorIcon.show"
+                        coords="map.activeSponsorIcon.coords"
+                        options="map.activeSponsorIcon.options"
+                        templateUrl="map.activeSponsorIcon.templateUrl"
+                        templateParameter="map.activeSponsorIcon">
+                </window>
+
+
+                <!--Ancestor Icons -->
+                <windows
+                        models="map.ancestors"
+                        idKey="'_id'"
+                        coords="'coords'"
+                        show="'show'"
+                        options="map.ancestorIcon.options"
+                        doRebuildAll="false">
+                    <div style="cursor:pointer">
+                        <div ng-click="$parent.$parent.$parent.sponsorClicked(model); $event.stopPropagation();">
+                            <a class="tooltips-ancestor" ng-non-bindable>
+                                <img class="smallIconImage" src="{{imgUrl}}" popover="{{name}}">
+                                <span>{{name}}</span></a>
+                        </div>
+                    </div>
+                </windows>
+
+                <!--Sponsor/messenger Icons -->
+                <windows
+                        models="map.members"
+                        idKey="'_id'"
+                        coords="'coords'"
+                        show="'show'"
+                        options="map.recruitIcon.options"
+                        doRebuildAll="false">
+                    <div>
+                        <div class="recruit-icon" style="cursor:pointer"
+                             ng-click="$parent.$parent.$parent.sponsorClicked(model); $event.stopPropagation();">
+                            <a class="tooltips" ng-non-bindable>
+                                <img class="smallIconImage" src="{{imgUrl}}" membername="{{ name }}">
+                                <span>{{name}}</span></a>
+                        </div>
+                        <div class="network-size-label">
+                            <div class="sponsor-mark" ng-hide="model.messenger">
+                                <img src="public/system/assets/img/kummi-sydan.png">
+                            </div>
+                            <div class="network-mark" ng-non-bindable>
+                                <img src="public/system/assets/img/network-icon.png">
+                                {{nSize}}
+                            </div>
+                        </div>
+                    </div>
+                </windows>
+
+                <!--lines-->
+                <polylines
+                        models="map.polylines"
+                        path="'path'"
+                        stroke="'stroke'"
+                        visible="'visible'">
+                </polylines>
+
+            </google-map>
+        </section>
+    </div>
+    </div>
+</section>
+<div ng-controller="ModalCtrl" ng-init="checkCookie()"></div>
