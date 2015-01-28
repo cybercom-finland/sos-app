@@ -13,33 +13,33 @@ require('../../server/models/sponsor.js');
 var Sponsor = mongoose.model('Sponsor');
 
 //Globals
-var sponsor1, sponsor2,
-    sponsorId;
+var sponsor1, sponsor2, sponsorId;
 
 describe('<Unit Test:>', function() {
     describe('Model Sponsor:', function() {
-        before(function(done) {
 
+        before(function(done) {
             sponsor1 = new Sponsor({
                 name: 'TestSponsor1',
                 hashedEmail: 'emaili',
-coords: {
-  longitude: 1,
-  latitude: 2,
-},
+                coords: {
+                  longitude: 1,
+                  latitude: 2,
+                },
             });
 
             sponsor2 = new Sponsor({
                 name: 'TestSponsor2',
-hashedEmail: 'emaili2',
-coords: {
-longitude: 11,
-latitude: 22,
-},
+                hashedEmail: 'emaili2',
+                coords: {
+                  longitude: 11,
+                  latitude: 22,
+                },
             });
 
             done();
         });
+
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
                 sponsor1.save(done);
@@ -49,7 +49,6 @@ latitude: 22,
                 Sponsor.findOne({ name: 'TestSponsor1' }, function(err, testSponsor) {
                     testSponsor.should.not.be.empty;
                     sponsorId = testSponsor._id;
-
                     done();
                 });
             });
@@ -65,24 +64,12 @@ latitude: 22,
             it('should be able to save with parentId', function(done) {
                 sponsor2.name = 'TestSponsor2';
                 sponsor2.parentId = sponsorId;
-
                 sponsor2.save(done);
             });
 
-            it('should have decendants after rebuildTree', function(done) {
-              /*
-                Sponsor.findOne({ name: 'TestSponsor1' }, function(err, testSponsor) {
-                    Sponsor.rebuildTree(testSponsor, 1, function() {
-                        testSponsor.descendants(function(err, decendants) {
-                            decendants.should.not.be.empty;
-                            done();
-                        });
-                    });
-                });
-                */
+            it('a child should have a parent', function(done) {
                 Sponsor.findOne({ name: 'TestSponsor2' }, function(err, testSponsor) {
                   testSponsor.parent(function(err, parent) {
-                    console.log('parent=', parent);
                     parent.should.not.be.empty;
                     done();
                   });
