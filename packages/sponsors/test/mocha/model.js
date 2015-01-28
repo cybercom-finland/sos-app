@@ -8,7 +8,7 @@
 var should = require('should'),
     mongoose = require('mongoose');
 
-// for some reason the mongoose model is not found withour requiring it 
+// for some reason the mongoose model is not found withour requiring it
 require('../../server/models/sponsor.js');
 var Sponsor = mongoose.model('Sponsor');
 
@@ -19,13 +19,23 @@ var sponsor1, sponsor2,
 describe('<Unit Test:>', function() {
     describe('Model Sponsor:', function() {
         before(function(done) {
-            
+
             sponsor1 = new Sponsor({
                 name: 'TestSponsor1',
+                hashedEmail: 'emaili',
+coords: {
+  longitude: 1,
+  latitude: 2,
+},
             });
- 
+
             sponsor2 = new Sponsor({
-                name: 'TestSponsor2', 
+                name: 'TestSponsor2',
+hashedEmail: 'emaili2',
+coords: {
+longitude: 11,
+latitude: 22,
+},
             });
 
             done();
@@ -60,14 +70,22 @@ describe('<Unit Test:>', function() {
             });
 
             it('should have decendants after rebuildTree', function(done) {
+              /*
                 Sponsor.findOne({ name: 'TestSponsor1' }, function(err, testSponsor) {
                     Sponsor.rebuildTree(testSponsor, 1, function() {
                         testSponsor.descendants(function(err, decendants) {
                             decendants.should.not.be.empty;
-
                             done();
-                        }); 
+                        });
                     });
+                });
+                */
+                Sponsor.findOne({ name: 'TestSponsor2' }, function(err, testSponsor) {
+                  testSponsor.parent(function(err, parent) {
+                    console.log('parent=', parent);
+                    parent.should.not.be.empty;
+                    done();
+                  });
                 });
             });
         });
