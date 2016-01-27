@@ -7,7 +7,8 @@
   "contributors": [
     { "name": "Marko Turunen", "mail": "marko.turunen@cybercom.com" },
     { "name": "Henri Eloranta", "mail": "henri.eloranta@cybercom.com" },
-    { "name": "Akseli Karvinen", "mail": "akseli.karvinen@cybercom.com" }
+    { "name": "Akseli Karvinen", "mail": "akseli.karvinen@cybercom.com" },
+    { "name": "Tero Keski-Valkama", "mail": "tero.keski-valkama@cybercom.com" }
   ],
   "mean": "0.3.3",
   "repository": {
